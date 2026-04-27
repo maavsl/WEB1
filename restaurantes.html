@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>🍽️ Restaurantes Fuerteventura</title>
+
+<style>
+body{font-family:sans-serif;background:#f4f1ea;margin:0}
+.hero{
+background:linear-gradient(135deg,#0f766e,#14b8a6);
+color:white;padding:30px 20px;text-align:center;
+position:relative;
+}
+.lang{position:absolute;top:12px;right:12px}
+.lang button{border:0;background:white;border-radius:999px;padding:7px;margin-left:4px;cursor:pointer}
+.container{max-width:900px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:white;padding:16px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.name{font-size:18px;font-weight:800}
+.score{background:#ecfdf5;color:#065f46;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:bold}
+.badge{display:inline-block;background:#f1f5f9;padding:4px 8px;border-radius:999px;font-size:12px;margin-right:6px}
+.comment{margin-top:10px;font-style:italic;color:#444}
+.btn{display:block;margin-top:12px;background:#0f766e;color:white;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<div class="lang">
+<button onclick="setLang('es')">🇪🇸</button>
+<button onclick="setLang('en')">🇬🇧</button>
+<button onclick="setLang('de')">🇩🇪</button>
+<button onclick="setLang('it')">🇮🇹</button>
+</div>
+<h1 id="title"></h1>
+<p id="subtitle"></p>
+</div>
+
+<div class="container">
+<div class="grid" id="content"></div>
+</div>
+
+<script src="salida/data.js"></script>
+
+<script>
+let lang="es";
+
+const T={
+es:{
+title:"🍽️ Dónde comer en Fuerteventura",
+sub:"Recomendaciones fáciles para comer bien 🌴",
+good:"Buena opción",
+maps:"Abrir en Google Maps"
+},
+en:{
+title:"🍽️ Where to eat in Fuerteventura",
+sub:"Easy recommendations for good food 🌴",
+good:"Good choice",
+maps:"Open in Google Maps"
+},
+de:{
+title:"🍽️ Essen auf Fuerteventura",
+sub:"Einfache Empfehlungen zum guten Essen 🌴",
+good:"Gute Wahl",
+maps:"In Google Maps öffnen"
+},
+it:{
+title:"🍽️ Dove mangiare a Fuerteventura",
+sub:"Consigli facili per mangiare bene 🌴",
+good:"Buona scelta",
+maps:"Apri in Google Maps"
+}
+};
+
+const comentariosTraducidos = {
+en:{
+"El favorito de mi abuela 👵":"My grandma’s favourite 👵",
+"Aquí siempre aciertas":"You can’t go wrong here",
+"Si sobra algo… va para casa 😄":"If there are leftovers… they go home 😄",
+"Salí más feliz que un niño en una tienda de caramelos 🍬":"I left happier than a kid in a candy shop 🍬",
+"De esos sitios que repites sin pensarlo":"One of those places you go back to without thinking",
+"Comer bien y sin complicaciones":"Good food, no complications",
+"Un clásico que nunca falla":"A classic that never fails",
+"Aquí se viene con hambre y se sale feliz":"Come hungry, leave happy",
+"La comida aquí tiene algo especial":"The food here has something special",
+"Pequeño pero matón 💥":"Small but mighty 💥",
+"De los que recomiendas sin dudar":"Easy to recommend",
+"Una sorpresa muy agradable":"A very pleasant surprise",
+"Ideal para una comida sin líos":"Perfect for an easy meal",
+"De esos sitios que guardas en favoritos":"One of those places you save as a favourite",
+"Aquí no se falla":"You won’t miss here",
+"Buen ambiente y mejor comida":"Great vibe and even better food",
+"Te sientes como en casa":"Feels like home",
+"Un sitio con alma":"A place with soul",
+"Perfecto para repetir mil veces":"Perfect to repeat again and again",
+"Comida rica, servicio rápido y sonrisa asegurada":"Tasty food, quick service and a guaranteed smile",
+"De esos que descubres por casualidad y no olvidas":"One of those places you discover by chance and never forget",
+"Aquí todo sabe mejor":"Everything tastes better here",
+"Para venir con hambre de verdad":"Come really hungry",
+"Plan fácil que siempre funciona":"An easy plan that always works",
+"De los que te hacen el día mejor":"One of those places that makes your day better"
+},
+de:{
+"El favorito de mi abuela 👵":"Der Favorit meiner Oma 👵",
+"Aquí siempre aciertas":"Hier liegt man immer richtig",
+"Si sobra algo… va para casa 😄":"Wenn etwas übrig bleibt… kommt es mit nach Hause 😄",
+"Salí más feliz que un niño en una tienda de caramelos 🍬":"Ich ging glücklicher raus als ein Kind im Süßigkeitenladen 🍬",
+"De esos sitios que repites sin pensarlo":"Einer dieser Orte, zu denen man sofort zurückkehrt",
+"Comer bien y sin complicaciones":"Gut essen, ganz unkompliziert",
+"Un clásico que nunca falla":"Ein Klassiker, der nie enttäuscht",
+"Aquí se viene con hambre y se sale feliz":"Hungrig kommen, glücklich gehen",
+"La comida aquí tiene algo especial":"Das Essen hier hat etwas Besonderes",
+"Pequeño pero matón 💥":"Klein, aber stark 💥",
+"De los que recomiendas sin dudar":"Kann man ohne Zweifel empfehlen",
+"Una sorpresa muy agradable":"Eine sehr angenehme Überraschung",
+"Ideal para una comida sin líos":"Perfekt für ein unkompliziertes Essen",
+"De esos sitios que guardas en favoritos":"Einer dieser Orte, die man speichert",
+"Aquí no se falla":"Hier macht man nichts falsch",
+"Buen ambiente y mejor comida":"Gute Stimmung und noch besseres Essen",
+"Te sientes como en casa":"Man fühlt sich wie zu Hause",
+"Un sitio con alma":"Ein Ort mit Seele",
+"Perfecto para repetir mil veces":"Perfekt, um immer wiederzukommen",
+"Comida rica, servicio rápido y sonrisa asegurada":"Leckeres Essen, schneller Service und ein sicheres Lächeln",
+"De esos que descubres por casualidad y no olvidas":"Einer dieser Orte, die man zufällig entdeckt und nicht vergisst",
+"Aquí todo sabe mejor":"Hier schmeckt alles besser",
+"Para venir con hambre de verdad":"Hier sollte man wirklich hungrig kommen",
+"Plan fácil que siempre funciona":"Ein einfacher Plan, der immer funktioniert",
+"De los que te hacen el día mejor":"Einer dieser Orte, die den Tag besser machen"
+},
+it:{
+"El favorito de mi abuela 👵":"Il preferito di mia nonna 👵",
+"Aquí siempre aciertas":"Qui vai sempre sul sicuro",
+"Si sobra algo… va para casa 😄":"Se avanza qualcosa… si porta a casa 😄",
+"Salí más feliz que un niño en una tienda de caramelos 🍬":"Sono uscito più felice di un bambino in un negozio di caramelle 🍬",
+"De esos sitios que repites sin pensarlo":"Uno di quei posti in cui torni senza pensarci",
+"Comer bien y sin complicaciones":"Mangiare bene senza complicazioni",
+"Un clásico que nunca falla":"Un classico che non delude mai",
+"Aquí se viene con hambre y se sale feliz":"Si arriva affamati e si esce felici",
+"La comida aquí tiene algo especial":"Il cibo qui ha qualcosa di speciale",
+"Pequeño pero matón 💥":"Piccolo ma potente 💥",
+"De los que recomiendas sin dudar":"Da consigliare senza dubbi",
+"Una sorpresa muy agradable":"Una piacevole sorpresa",
+"Ideal para una comida sin líos":"Perfetto per un pasto semplice",
+"De esos sitios que guardas en favoritos":"Uno di quei posti da salvare tra i preferiti",
+"Aquí no se falla":"Qui non si sbaglia",
+"Buen ambiente y mejor comida":"Bella atmosfera e cibo ancora migliore",
+"Te sientes como en casa":"Ti senti come a casa",
+"Un sitio con alma":"Un posto con anima",
+"Perfecto para repetir mil veces":"Perfetto da ripetere mille volte",
+"Comida rica, servicio rápido y sonrisa asegurada":"Cibo buono, servizio veloce e sorriso assicurato",
+"De esos que descubres por casualidad y no olvidas":"Uno di quei posti che scopri per caso e non dimentichi",
+"Aquí todo sabe mejor":"Qui tutto sa di più buono",
+"Para venir con hambre de verdad":"Da venire con molta fame",
+"Plan fácil que siempre funciona":"Un piano semplice che funziona sempre",
+"De los que te hacen el día mejor":"Uno di quei posti che migliorano la giornata"
+}
+};
+
+function emoji(tipo){
+tipo = String(tipo || "").toLowerCase();
+
+if(tipo.includes("pizza")) return "🍕";
+if(tipo.includes("pescado")) return "🐟";
+if(tipo.includes("hamburg")) return "🍔";
+if(tipo.includes("cafe")) return "☕";
+if(tipo.includes("copas")) return "🍹";
+if(tipo.includes("bodega")) return "🍷";
+if(tipo.includes("carne")) return "🥩";
+if(tipo.includes("tapas")) return "🍤";
+if(tipo.includes("indio")) return "🍛";
+if(tipo.includes("arroc")) return "🥘";
+if(tipo.includes("local")) return "🏠";
+
+return "🍽️";
+}
+
+function comentarioTraducido(texto){
+return comentariosTraducidos[lang]?.[texto] || texto;
+}
+
+function setLang(l){
+lang=l;
+render();
+}
+
+function render(){
+const t=T[lang];
+
+document.documentElement.lang=lang;
+document.getElementById("title").innerText=t.title;
+document.getElementById("subtitle").innerText=t.sub;
+
+const cont=document.getElementById("content");
+cont.innerHTML="";
+
+RESTAURANTES.forEach(r=>{
+cont.innerHTML += `
+<div class="card">
+  <div class="topline">
+    <div class="name">${emoji(r.tipo)} ${r.nombre}</div>
+    <div class="score">${r.calidad}/10</div>
+  </div>
+
+  <div>
+    <span class="badge">${r.tipo}</span>
+    <span class="badge">${t.good}</span>
+  </div>
+
+  <div class="comment">"${comentarioTraducido(r.comentario)}"</div>
+
+  <a class="btn" href="${r.link}" target="_blank">
+    ${t.maps}
+  </a>
+</div>
+`;
+});
+}
+
+render();
+</script>
+
+</body>
+</html>

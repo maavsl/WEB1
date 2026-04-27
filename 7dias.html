@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuerteventura en 7 días</title>
+
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f1ea;color:#1f2933;}
+.hero{background:#0f766e;color:white;padding:22px;text-align:center;position:relative;}
+.lang{position:absolute;top:10px;right:10px;}
+.lang button{margin:2px;border:none;padding:6px;border-radius:50%;cursor:pointer;background:white;}
+.container{padding:15px;max-width:900px;margin:auto;}
+.card{background:white;padding:18px;border-radius:18px;margin-bottom:14px;box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.day{font-size:13px;font-weight:bold;color:#0f766e;text-transform:uppercase;letter-spacing:.08em;}
+h2{margin:6px 0 10px;font-size:22px;}
+ul{padding-left:20px;margin-bottom:0;}
+li{margin-bottom:8px;line-height:1.4;}
+.note{background:#fff7ed;border:1px solid #fed7aa;}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<div class="lang">
+<button onclick="setLang('es')">🇪🇸</button>
+<button onclick="setLang('en')">🇬🇧</button>
+<button onclick="setLang('de')">🇩🇪</button>
+<button onclick="setLang('it')">🇮🇹</button>
+</div>
+<h1 id="title"></h1>
+<p id="subtitle"></p>
+</div>
+
+<div class="container" id="content"></div>
+
+<script>
+const data = {
+es:{
+title:"Fuerteventura en 7 días",
+subtitle:"Plan fácil y divertido para disfrutar la isla 👨‍👩‍👧‍👦",
+days:[
+["Día 1","Norte: Grandes Playas y dunas",["Grandes Playas de Corralejo","Dunas de Corralejo","Actividad de quad por la tarde"]],
+["Día 2","Isla de Lobos y Corralejo",["Isla de Lobos de 10:00 a 15:00","Paseo por La Oliva: Casa de los Coroneles","Cena y copas en Corralejo"]],
+["Día 3","Lajares y El Cotillo",["Mercadillo de Lajares, sábados","Playas salvajes de El Cotillo","Atardecer en Los Lagos, El Cotillo"]],
+["Día 4","Volcán y picnic",["Volcán Calderón Hondo por la mañana","Picnic en la playa por la tarde","Zona recomendada: Salto del Moro"]],
+["Día 5","Betancuria y costa oeste",["Ruta en coche a Betancuria","Visita Ajuy y Aguas Verdes","Barranco de la Madre del Agua"]],
+["Día 6","Sur de la isla",["Ruta en coche hacia el sur","Costa Calma o Morro Jable","Cofete y Casa Winter"]],
+["Día 7","Repetir lo mejor",["Vuelve a los lugares que más te gustaron","Plan tranquilo antes de terminar el viaje"]]
+],
+note:"Consejo: revisa siempre el viento antes de elegir playa. En Fuerteventura eso cambia mucho la experiencia."
+},
+en:{
+title:"Fuerteventura in 7 days",
+subtitle:"A fun and easy plan for families 👨‍👩‍👧‍👦",
+days:[
+["Day 1","North: Grandes Playas and dunes",["Grandes Playas de Corralejo","Corralejo dunes","Quad activity in the afternoon"]],
+["Day 2","Lobos Island and Corralejo",["Lobos Island from 10:00 to 15:00","Walk in La Oliva: Casa de los Coroneles","Dinner and drinks in Corralejo"]],
+["Day 3","Lajares and El Cotillo",["Lajares market, Saturdays","Wild beaches in El Cotillo","Sunset at Los Lagos, El Cotillo"]],
+["Day 4","Volcano and picnic",["Calderón Hondo volcano in the morning","Picnic by the beach in the afternoon","Recommended area: Salto del Moro"]],
+["Day 5","Betancuria and west coast",["Road trip to Betancuria","Visit Ajuy and Aguas Verdes","Barranco de la Madre del Agua"]],
+["Day 6","South of the island",["Road trip to the south","Costa Calma or Morro Jable","Cofete and Casa Winter"]],
+["Day 7","Repeat your favourites",["Go back to the places you enjoyed the most","Relaxed plan before ending the trip"]]
+],
+note:"Tip: always check the wind before choosing a beach. In Fuerteventura it can completely change the experience."
+},
+de:{
+title:"Fuerteventura in 7 Tagen",
+subtitle:"Ein einfacher Familienplan für die Insel 👨‍👩‍👧‍👦",
+days:[
+["Tag 1","Norden: Grandes Playas und Dünen",["Grandes Playas de Corralejo","Dünen von Corralejo","Quad-Aktivität am Nachmittag"]],
+["Tag 2","Insel Lobos und Corralejo",["Insel Lobos von 10:00 bis 15:00","Spaziergang in La Oliva: Casa de los Coroneles","Abendessen und Drinks in Corralejo"]],
+["Tag 3","Lajares und El Cotillo",["Markt in Lajares, samstags","Wilde Strände in El Cotillo","Sonnenuntergang in Los Lagos, El Cotillo"]],
+["Tag 4","Vulkan und Picknick",["Vulkan Calderón Hondo am Morgen","Picknick am Strand am Nachmittag","Empfohlene Zone: Salto del Moro"]],
+["Tag 5","Betancuria und Westküste",["Roadtrip nach Betancuria","Ajuy und Aguas Verdes besuchen","Barranco de la Madre del Agua"]],
+["Tag 6","Süden der Insel",["Roadtrip in den Süden","Costa Calma oder Morro Jable","Cofete und Casa Winter"]],
+["Tag 7","Lieblingsorte wiederholen",["Besuchen Sie die Orte, die Ihnen am besten gefallen haben","Entspannter Plan vor der Abreise"]]
+],
+note:"Tipp: Prüfen Sie immer den Wind, bevor Sie einen Strand wählen. Auf Fuerteventura macht das einen großen Unterschied."
+},
+it:{
+title:"Fuerteventura in 7 giorni",
+subtitle:"Un piano facile e divertente per famiglie 👨‍👩‍👧‍👦",
+days:[
+["Giorno 1","Nord: Grandes Playas e dune",["Grandes Playas de Corralejo","Dune di Corralejo","Attività quad nel pomeriggio"]],
+["Giorno 2","Isola di Lobos e Corralejo",["Isola di Lobos dalle 10:00 alle 15:00","Passeggiata a La Oliva: Casa de los Coroneles","Cena e drink a Corralejo"]],
+["Giorno 3","Lajares e El Cotillo",["Mercato di Lajares, sabato","Spiagge selvagge a El Cotillo","Tramonto a Los Lagos, El Cotillo"]],
+["Giorno 4","Vulcano e picnic",["Vulcano Calderón Hondo al mattino","Picnic in spiaggia nel pomeriggio","Zona consigliata: Salto del Moro"]],
+["Giorno 5","Betancuria e costa ovest",["Giro in auto a Betancuria","Visita Ajuy e Aguas Verdes","Barranco de la Madre del Agua"]],
+["Giorno 6","Sud dell'isola",["Giro in auto verso sud","Costa Calma o Morro Jable","Cofete e Casa Winter"]],
+["Giorno 7","Ripetere i preferiti",["Torna nei posti che ti sono piaciuti di più","Piano tranquillo prima di finire il viaggio"]]
+],
+note:"Consiglio: controlla sempre il vento prima di scegliere una spiaggia. A Fuerteventura cambia molto l'esperienza."
+}
+};
+
+let lang="es";
+
+function setLang(l){
+lang=l;
+render();
+}
+
+function addEmoji(text){
+const t=text.toLowerCase();
+
+if(t.includes("beach")||t.includes("playa")||t.includes("spiaggia")||t.includes("strand")) return "🏖️ " + text;
+if(t.includes("dune")||t.includes("duna")||t.includes("dünen")) return "🏜️ " + text;
+if(t.includes("quad")) return "🏎️ " + text;
+if(t.includes("lobos")) return "🐺 " + text;
+if(t.includes("market")||t.includes("mercado")||t.includes("markt")||t.includes("mercato")) return "🛍️ " + text;
+if(t.includes("sunset")||t.includes("atardecer")||t.includes("sonnenuntergang")||t.includes("tramonto")) return "🌅 " + text;
+if(t.includes("volcano")||t.includes("volcán")||t.includes("vulkan")||t.includes("vulcano")) return "🌋 " + text;
+if(t.includes("picnic")) return "🧺 " + text;
+if(t.includes("road")||t.includes("ruta")||t.includes("giro")||t.includes("roadtrip")) return "🚗 " + text;
+if(t.includes("dinner")||t.includes("cena")||t.includes("abendessen")) return "🍽️ " + text;
+if(t.includes("drink")||t.includes("copas")) return "🍹 " + text;
+if(t.includes("walk")||t.includes("paseo")||t.includes("spaziergang")||t.includes("passeggiata")) return "🚶 " + text;
+if(t.includes("betancuria")) return "🏘️ " + text;
+if(t.includes("cofete")) return "🌊 " + text;
+if(t.includes("ajuy")) return "⛰️ " + text;
+
+return "✨ " + text;
+}
+
+function render(){
+const t=data[lang];
+document.getElementById("title").innerText=t.title;
+document.getElementById("subtitle").innerText=t.subtitle;
+
+let html="";
+t.days.forEach(d=>{
+html+=`
+<div class="card">
+<div class="day">🗓️ ${d[0]}</div>
+<h2>${addEmoji(d[1])}</h2>
+<ul>${d[2].map(x=>`<li>${addEmoji(x)}</li>`).join("")}</ul>
+</div>`;
+});
+
+html+=`<div class="card note"><strong>💡 ${t.note}</strong></div>`;
+document.getElementById("content").innerHTML=html;
+}
+
+render();
+</script>
+
+</body>
+</html>

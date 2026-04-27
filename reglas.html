@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Normas de la vivienda</title>
+
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f1ea;}
+.hero{background:#0f766e;color:white;padding:20px;text-align:center;}
+.lang{position:absolute;top:10px;right:10px;}
+.lang button{margin:2px;border:none;padding:6px;border-radius:50%;cursor:pointer;}
+
+.container{padding:15px;}
+.card{background:white;padding:16px;border-radius:15px;margin-bottom:12px;}
+.rule{margin-bottom:12px;font-size:15px;}
+.rule strong{display:block;margin-bottom:4px;}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<div class="lang">
+<button onclick="setLang('es')">🇪🇸</button>
+<button onclick="setLang('en')">🇬🇧</button>
+<button onclick="setLang('de')">🇩🇪</button>
+<button onclick="setLang('it')">🇮🇹</button>
+</div>
+
+<h1 id="title"></h1>
+<p id="subtitle"></p>
+</div>
+
+<div class="container" id="rules"></div>
+
+<script>
+
+const content = {
+
+es: {
+title:"Normas de la vivienda",
+sub:"Por favor, léelas antes de tu estancia",
+rules:[
+["⏰ Horarios","Check-in desde 15:00 · Check-out antes de 11:00"],
+["🔇 Ruido","Respeta el descanso de los vecinos. Evita ruido por la noche"],
+["🚫 Fumar","No se permite fumar en el interior"],
+["👥 Ocupación","Solo las personas incluidas en la reserva pueden alojarse"],
+["🧹 Limpieza","Deja la vivienda en condiciones razonables"],
+["🔑 Llaves","Devuelve las llaves y cierra correctamente"],
+["💧 Averías","Informa de cualquier problema lo antes posible"],
+["🗑️ Basura","Deposita la basura en los puntos indicados"],
+["⚠️ Importante","El incumplimiento puede implicar cargos adicionales"]
+]
+},
+
+en: {
+title:"House rules",
+sub:"Please read before your stay",
+rules:[
+["⏰ Schedule","Check-in from 15:00 · Check-out before 11:00"],
+["🔇 Noise","Respect neighbours. Avoid noise at night"],
+["🚫 Smoking","Smoking is not allowed inside"],
+["👥 Guests","Only registered guests are allowed"],
+["🧹 Cleaning","Leave the property in reasonable condition"],
+["🔑 Keys","Return keys and close properly"],
+["💧 Issues","Report any problem as soon as possible"],
+["🗑️ Rubbish","Use designated waste areas"],
+["⚠️ Important","Breaking rules may result in extra charges"]
+]
+},
+
+de: {
+title:"Hausregeln",
+sub:"Bitte vor Ankunft lesen",
+rules:[
+["⏰ Zeiten","Check-in ab 15:00 · Check-out vor 11:00"],
+["🔇 Lärm","Bitte Rücksicht auf Nachbarn nehmen"],
+["🚫 Rauchen","Rauchen im Innenbereich verboten"],
+["👥 Gäste","Nur registrierte Gäste erlaubt"],
+["🧹 Sauberkeit","Wohnung ordentlich hinterlassen"],
+["🔑 Schlüssel","Schlüssel zurückgeben und schließen"],
+["💧 Probleme","Probleme bitte sofort melden"],
+["🗑️ Müll","Müll an vorgesehenen Stellen entsorgen"],
+["⚠️ Wichtig","Verstöße können Kosten verursachen"]
+]
+},
+
+it: {
+title:"Regole della casa",
+sub:"Leggere prima dell'arrivo",
+rules:[
+["⏰ Orari","Check-in dalle 15:00 · Check-out entro 11:00"],
+["🔇 Rumore","Rispetta i vicini, evita rumore di notte"],
+["🚫 Fumo","Vietato fumare all'interno"],
+["👥 Ospiti","Solo ospiti registrati"],
+["🧹 Pulizia","Lascia la casa in condizioni adeguate"],
+["🔑 Chiavi","Restituisci le chiavi e chiudi bene"],
+["💧 Problemi","Segnala subito eventuali problemi"],
+["🗑️ Rifiuti","Usa le aree indicate"],
+["⚠️ Importante","Violazioni possono comportare costi extra"]
+]
+}
+
+};
+
+let lang="es";
+
+function setLang(l){lang=l;render();}
+
+function render(){
+let t=content[lang];
+
+document.getElementById("title").innerText=t.title;
+document.getElementById("subtitle").innerText=t.sub;
+
+let html="";
+t.rules.forEach(r=>{
+html+=`<div class="card"><div class="rule"><strong>${r[0]}</strong>${r[1]}</div></div>`;
+});
+
+document.getElementById("rules").innerHTML=html;
+}
+
+render();
+
+</script>
+
+</body>
+</html>
