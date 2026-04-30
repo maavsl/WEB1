@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artemy 71</title>
+
+<style>
+:root{
+--bg:#f4f1ea;--card:#ffffff;--text:#1f2933;--muted:#667085;
+--primary:#0f766e;--primary-dark:#115e59;--border:#e5e7eb;
+--shadow:0 10px 30px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:86px;}
+.hero{background:linear-gradient(135deg,#0f766e,#14b8a6);color:white;padding:28px 18px 34px;border-bottom-left-radius:28px;border-bottom-right-radius:28px;position:relative;}
+.brand{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;font-weight:800;margin-bottom:12px;}
+.lang-switch{position:absolute;top:12px;right:12px;display:flex;gap:5px;}
+.lang-switch button{border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.18);border-radius:999px;padding:6px 8px;font-size:16px;cursor:pointer;}
+.hero h1{margin:0;font-size:30px;line-height:1.05;padding-right:80px;}
+.hero p{margin:10px 0 0;font-size:16px;opacity:.95;}
+.container{width:100%;max-width:720px;margin:12px auto 0;padding:0 14px 28px;}
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;padding:13px 14px;border-radius:16px;border:0;background:var(--primary);color:white;font-size:15px;font-weight:800;text-decoration:none;text-align:center;box-shadow:var(--shadow);}
+.btn.secondary{background:white;color:var(--primary-dark);border:1px solid var(--border);}
+.btn.full{grid-column:1 / -1;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow);}
+.card h2{margin:0 0 10px;font-size:20px;display:flex;align-items:center;gap:8px;}
+.card p{margin:7px 0;line-height:1.45;color:var(--muted);font-size:15px;}
+.address{font-size:17px;font-weight:800;color:var(--text);margin-bottom:12px;line-height:1.35;}
+.code{font-size:30px;font-weight:900;letter-spacing:.08em;background:#ecfdf5;color:var(--primary-dark);padding:14px;border-radius:16px;text-align:center;margin:12px 0;border:1px dashed #99f6e4;}
+.info-line{background:#f9fafb;border:1px solid var(--border);border-radius:16px;padding:13px;margin:9px 0;font-weight:800;color:var(--text);}
+.extra-buttons{display:grid;grid-template-columns:1fr;gap:10px;}
+.parking-box{background:#f9fafb;border:1px solid var(--border);border-radius:16px;padding:13px;margin:9px 0;line-height:1.45;}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:9px 10px 12px;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;}
+.bottom-nav a{text-decoration:none;color:var(--primary-dark);font-size:12px;font-weight:900;text-align:center;background:#f0fdfa;border-radius:14px;padding:10px 4px;border:1px solid #ccfbf1;}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:14px 10px 28px;}
+.hidden{display:none!important;}
+@media(min-width:760px){
+.hero{padding-top:44px;text-align:center;}
+.hero h1{font-size:42px;padding-right:0;}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+<div class="brand">Visit Fuerte</div>
+<div class="lang-switch">
+<button onclick="setLang('es')">🇪🇸</button>
+<button onclick="setLang('en')">🇬🇧</button>
+<button onclick="setLang('de')">🇩🇪</button>
+<button onclick="setLang('it')">🇮🇹</button>
+</div>
+<h1 id="title"></h1>
+<p id="subtitle"></p>
+</header>
+
+<main class="container">
+
+<section class="quick-actions">
+<a id="videoBtn" class="btn secondary" target="_blank">🎥 Vídeo llegada</a>
+<a id="keysBtn" class="btn secondary" href="#keys">🔑 Llaves</a>
+</section>
+
+<section id="addressCard" class="card">
+<h2 id="addressTitle"></h2>
+<div id="address" class="address"></div>
+<a id="routeBtn" class="btn full" target="_blank"></a>
+</section>
+
+<section id="keys" class="card">
+<h2 id="keysTitle"></h2>
+<p id="keysText"></p>
+<div class="code" id="code"></div>
+</section>
+
+<section id="arrivalCard" class="card">
+<h2 id="arrivalTitle"></h2>
+<div id="taxi" class="info-line"></div>
+<div id="transfer" class="info-line"></div>
+<div id="bus" class="info-line"></div>
+</section>
+
+<section id="extrasCard" class="card">
+<h2 id="extrasTitle"></h2>
+<div id="extras" class="extra-buttons"></div>
+</section>
+
+<section class="card">
+<h2 id="helpTitle"></h2>
+<p id="helpText"></p>
+<a id="whatsapp" class="btn full" target="_blank"></a>
+</section>
+
+<div id="footer" class="footer"></div>
+
+</main>
+
+<nav class="bottom-nav">
+<a id="navMaps" target="_blank"></a>
+<a id="navKeys" href="#keys"></a>
+<a id="navVideo" target="_blank"></a>
+<a id="navWhatsapp" target="_blank"></a>
+</nav>
+
+<script>
+const data = {
+name:"Artemy 71",
+address:"Calle Artemy, 23. Caleta de fuste, apt 71",
+maps:"https://maps.app.goo.gl/aRvRhzYQreneaDNW6",
+video:"https://youtu.be/2q0sEHPCq5I",
+code:"2468",
+phone:"00 34 688 91 07 40",
+photos:"n/a",
+rules:"https://maavsl.github.io/WEB1/reglas.html",
+trash:"https://maps.app.goo.gl/wLrudbEsinRcRS4U7",
+supermarkets:"https://maps.app.goo.gl/j7JAcNBFE49ddSfVA",
+beaches:"https://visitfuerte.my.canva.site/mapa",
+restaurants:"https://maavsl.github.io/WEB1/restaurantes.html",
+seven:"https://maavsl.github.io/WEB1/7dias.html",
+pool:"https://www.youtube.com/watch?v=k_Y9NKR9Ngs",
+parking:"n/a",
+taxi:"(aprox) 25eur",
+transfer:"n/a",
+bus:"n/a"
+};
+
+const T={
+es:{
+sub:"Guía rápida para tu llegada",
+video:"🎥 Vídeo llegada",keysBtn:"🔑 Llaves",
+addr:"📍 Dirección exacta",route:"Dirección en google maps",
+keys:"🔑 Recogida de llaves",keyText:"Usa este código para abrir la caja de llaves:",
+arrival:"🚗 Cómo llegar",taxi:"Taxi",transfer:"Te podemos llevar",bus:"Bus",
+help:"🆘 Ayuda",helpText:"Si tienes un problema real durante la llegada, escríbenos por WhatsApp.",wh:"WhatsApp ayuda",
+extras:"🌴 Información útil",rules:"📋 Normas",pool:"🏊 Piscina",parking:"🅿️ Parking",trash:"🗑️ Basura",
+supermarkets:"🛒 Supermercados",beaches:"🏖️ Actividades",restaurants:"🍽️ Restaurantes",seven:"🌴 Fuerteventura en 7 días",
+navMaps:"📍<br>Maps",navKeys:"🔑<br>Llaves",navVideo:"🎥<br>Vídeo",navHelp:"🆘<br>Ayuda",
+footer:"Visit Fuerte · Guía privada para huéspedes"
+},
+en:{
+sub:"Quick arrival guide",
+video:"🎥 Arrival video",keysBtn:"🔑 Keys",
+addr:"📍 Exact address",route:"Address in google maps",
+keys:"🔑 Key collection",keyText:"Use this code to open the key box:",
+arrival:"🚗 How to arrive",taxi:"Taxi",transfer:"We can drive you",bus:"Bus",
+help:"🆘 Help",helpText:"If you have a real problem during arrival, message us on WhatsApp.",wh:"WhatsApp help",
+extras:"🌴 Useful information",rules:"📋 House rules",pool:"🏊 Pool",parking:"🅿️ Parking",trash:"🗑️ Rubbish point",
+supermarkets:"🛒 Supermarkets",beaches:"🏖️ Activities",restaurants:"🍽️ Restaurants",seven:"🌴 Fuerteventura in 7 days",
+navMaps:"📍<br>Maps",navKeys:"🔑<br>Keys",navVideo:"🎥<br>Video",navHelp:"🆘<br>Help",
+footer:"Visit Fuerte · Private guest guide"
+},
+de:{
+sub:"Schnelle Anreise-Anleitung",
+video:"🎥 Anreisevideo",keysBtn:"🔑 Schlüssel",
+addr:"📍 Genaue Adresse",route:"Adresse am google maps",
+keys:"🔑 Schlüsselübergabe",keyText:"Verwenden Sie diesen Code für die Schlüsselbox:",
+arrival:"🚗 Anreise",taxi:"Taxi",transfer:"Wir können Sie fahren",bus:"Bus",
+help:"🆘 Hilfe",helpText:"Wenn Sie bei der Anreise ein echtes Problem haben, schreiben Sie uns per WhatsApp.",wh:"WhatsApp Hilfe",
+extras:"🌴 Nützliche Informationen",rules:"📋 Hausregeln",pool:"🏊 Pool",parking:"🅿️ Parkplatz",trash:"🗑️ Müll",
+supermarkets:"🛒 Supermärkte",beaches:"🏖️ Aktivitäten",restaurants:"🍽️ Restaurants",seven:"🌴 Fuerteventura in 7 Tagen",
+navMaps:"📍<br>Maps",navKeys:"🔑<br>Schlüssel",navVideo:"🎥<br>Video",navHelp:"🆘<br>Hilfe",
+footer:"Visit Fuerte · Private Gästeanleitung"
+},
+it:{
+sub:"Guida rapida per l'arrivo",
+video:"🎥 Video arrivo",keysBtn:"🔑 Chiavi",
+addr:"📍 Indirizzo esatto",route:"link google maps",
+keys:"🔑 Ritiro chiavi",keyText:"Usa questo codice per aprire la cassetta delle chiavi:",
+arrival:"🚗 Come arrivare",taxi:"Taxi",transfer:"Possiamo accompagnarti",bus:"Bus",
+help:"🆘 Aiuto",helpText:"Se hai un problema reale durante l'arrivo, scrivici su WhatsApp.",wh:"Aiuto WhatsApp",
+extras:"🌴 Informazioni utili",rules:"📋 Regole della casa",pool:"🏊 Piscina",parking:"🅿️ Parcheggio",trash:"🗑️ Rifiuti",
+supermarkets:"🛒 Supermercati",beaches:"🏖️ Attività",restaurants:"🍽️ Ristoranti",seven:"🌴 Fuerteventura in 7 giorni",
+navMaps:"📍<br>Maps",navKeys:"🔑<br>Chiavi",navVideo:"🎥<br>Video",navHelp:"🆘<br>Aiuto",
+footer:"Visit Fuerte · Guida privata per ospiti"
+}
+};
+
+let lang="es";
+
+function useful(v){
+return v && v.trim()!=="" && v.trim().toUpperCase()!=="N/A";
+}
+
+function cleanPhone(v){
+return String(v || "").replace(/\D/g,"");
+}
+
+function setLang(l){
+lang=l;
+render();
+}
+
+function mapsRouteUrl(){
+return useful(data.maps) ? data.maps : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.address)}`;
+}
+
+function setOptionalLink(id,url,label){
+const el=document.getElementById(id);
+if(!el)return;
+if(label)el.innerHTML=label;
+if(useful(url)){
+el.href=url;
+el.classList.remove("hidden");
+el.style.display="";
+}else{
+el.classList.add("hidden");
+}
+}
+
+function hideIfEmpty(id,value,label){
+const el=document.getElementById(id);
+if(!el)return;
+if(useful(value)){
+el.innerText=label ? `${label}: ${value}` : value;
+el.style.display="";
+}else{
+el.style.display="none";
+}
+}
+
+function addExtra(label,url){
+if(!useful(url))return;
+document.getElementById("extras").innerHTML += `<a class="btn secondary full" href="${url}" target="_blank">${label}</a>`;
+}
+
+function render(){
+const t=T[lang];
+const route=mapsRouteUrl();
+const wa=`https://wa.me/${cleanPhone(data.phone)}`;
+
+document.documentElement.lang=lang;
+document.title=data.name;
+document.getElementById("title").innerText=data.name;
+document.getElementById("subtitle").innerText=t.sub;
+
+setOptionalLink("videoBtn",data.video,t.video);
+document.getElementById("keysBtn").innerHTML=t.keysBtn;
+
+document.getElementById("addressTitle").innerText=t.addr;
+document.getElementById("address").innerText=data.address;
+document.getElementById("routeBtn").innerText=t.route;
+document.getElementById("routeBtn").href=route;
+document.getElementById("navMaps").href=route;
+
+document.getElementById("keysTitle").innerText=t.keys;
+document.getElementById("keysText").innerText=t.keyText;
+document.getElementById("code").innerText=data.code;
+
+document.getElementById("arrivalTitle").innerText=t.arrival;
+hideIfEmpty("taxi",data.taxi,t.taxi);
+hideIfEmpty("transfer",data.transfer,t.transfer);
+hideIfEmpty("bus",data.bus,t.bus);
+
+document.getElementById("arrivalCard").style.display=
+(!useful(data.taxi)&&!useful(data.transfer)&&!useful(data.bus)) ? "none" : "";
+
+document.getElementById("extrasTitle").innerText=t.extras;
+document.getElementById("extras").innerHTML="";
+addExtra(t.rules,data.rules);
+addExtra(t.pool,data.pool);
+addExtra(t.parking,data.parking);
+addExtra(t.trash,data.trash);
+addExtra(t.supermarkets,data.supermarkets);
+addExtra(t.beaches,data.beaches);
+addExtra(t.restaurants,data.restaurants);
+addExtra(t.seven,data.seven);
+
+document.getElementById("extrasCard").style.display=
+document.getElementById("extras").innerHTML.trim()==="" ? "none" : "";
+
+document.getElementById("helpTitle").innerText=t.help;
+document.getElementById("helpText").innerText=t.helpText;
+document.getElementById("whatsapp").innerText=t.wh;
+document.getElementById("whatsapp").href=wa;
+document.getElementById("navWhatsapp").href=wa;
+
+document.getElementById("navMaps").innerHTML=t.navMaps;
+document.getElementById("navKeys").innerHTML=t.navKeys;
+document.getElementById("navVideo").innerHTML=t.navVideo;
+document.getElementById("navWhatsapp").innerHTML=t.navHelp;
+document.getElementById("footer").innerText=t.footer;
+
+setOptionalLink("navVideo",data.video,t.navVideo);
+}
+
+render();
+</script>
+
+</body>
+</html>
