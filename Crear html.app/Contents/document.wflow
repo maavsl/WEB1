@@ -60,7 +60,16 @@
 				<dict>
 					<key>COMMAND_STRING</key>
 					<string>cd "$HOME/Desktop/PROGRAMA"
-python3 generador.py</string>
+
+python3 generador.py
+
+git add .
+
+git commit -m "auto update $(date '+%Y-%m-%d %H:%M:%S')" || true
+
+git push
+
+osascript -e 'display notification "HTML generados y web subida" with title "MAAV"'</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
