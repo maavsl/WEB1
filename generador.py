@@ -38,7 +38,7 @@ def generar_html(datos, plantilla):
         "Nombre de la vivienda": buscar(datos, ["Nombre de la vivienda"]),
         "Dirección": buscar(datos, ["Dirección"]),
         "Link maps": buscar(datos, ["Link maps"]),
-        "Link video": buscar(datos, ["Link video", "Video", "Vídeo"]),
+        "Link video": buscar(datos, ["Link video", "Video", "Vídeo", "Link Video"]),
         "Codigo Caja": buscar(datos, ["Codigo Caja", "Código Caja"]),
         "telefono": buscar(datos, ["telefono", "Teléfono"]),
         "Fotos": buscar(datos, ["Fotos"]),
@@ -50,8 +50,8 @@ def generar_html(datos, plantilla):
         "Fuerte en 7 dias": buscar(datos, ["Fuerte en 7 dias", "Fuerte en 7 días"]),
         "Piscina": buscar(datos, ["Piscina"]),
         "Parking": buscar(datos, ["Parking"]),
-        "Taxi": buscar(datos, ["Taxi"]),
-        "Te podemos llevar": buscar(datos, ["Te podemos llevar"]),
+        "Taxi": buscar(datos, ["Taxi", "Taxi aproximado", "Taxi (aproximado)"]),
+        "Te podemos llevar": buscar(datos, ["Te podemos llevar", "Te podemos llevar max 2 personas", "Te podemos llevar (max 2 personas)"]),
         "Bus": buscar(datos, ["Bus"])
     }
 
@@ -69,15 +69,40 @@ def nombre_salida(archivo):
     return nombre.strip().lower().replace(" ", "_") + ".html"
 
 def titulo_desde_archivo(archivo):
-    return archivo.replace(".html", "").replace("_", " ").title()
+    nombre = archivo.replace(".html", "").replace("_", " ").title()
+    nombre = nombre.replace("P23", "P23").replace("P89", "P89")
+    nombre = nombre.replace("Pm", "PM").replace("Vm", "VM")
+    return nombre
 
 def generar_index():
-    archivos = [f for f in os.listdir(SALIDA) if f.endswith(".html")]
+    especiales = [
+        ("🍽️ Restaurantes", "restaurantes.html"),
+        ("📋 Reglas", "reglas.html"),
+        ("🗺️ 7 días en Fuerteventura", "7dias.html"),
+    ]
 
-    enlaces = ""
+    archivos = [
+        f for f in os.listdir(SALIDA)
+        if f.lower().endswith(".html")
+    ]
+
+    viviendas = []
+
     for archivo in sorted(archivos):
+        if archivo.lower() in ["restaurantes.html", "index.html"]:
+            continue
+
         nombre = titulo_desde_archivo(archivo)
-        enlaces += f'    <a class="card" href="salida/{archivo}">{nombre}</a>\n'
+        viviendas.append((nombre, f"salida/{archivo}"))
+
+    especiales_html = ""
+    for nombre, ruta in especiales:
+        if os.path.exists(ruta):
+            especiales_html += f'    <a class="card especial" href="{ruta}">{nombre}</a>\n'
+
+    viviendas_html = ""
+    for nombre, ruta in viviendas:
+        viviendas_html += f'    <a class="card vivienda" href="{ruta}">{nombre}</a>\n'
 
     html = f"""<!DOCTYPE html>
 <html lang="es">
@@ -86,18 +111,100 @@ def generar_index():
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAAV</title>
 <style>
-body{{font-family:Arial;padding:20px;background:#f4f1ea}}
-.card{{display:block;margin:10px 0;padding:20px;background:white;border-radius:12px;text-decoration:none;color:black;font-size:20px}}
+body {{
+  font-family: Arial, sans-serif;
+  background: #f4f1ea;
+  margin: 0;
+  padding: 24px;
+  color: #1f2933;
+}}
+
+h1 {{
+  font-size: 34px;
+  margin: 0 0 8px;
+}}
+
+.sub {{
+  color: #667085;
+  font-size: 16px;
+  margin: 0 0 24px;
+}}
+
+.section {{
+  margin: 30px 0 12px;
+  font-size: 17px;
+  font-weight: 900;
+  color: #667085;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}}
+
+.grid {{
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+}}
+
+.card {{
+  display: block;
+  padding: 22px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 850;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}}
+
+.especial {{
+  background: #ffffff;
+  color: #1f2933;
+}}
+
+.vivienda {{
+  background: #0f766e;
+  color: white;
+}}
+
+.card:active {{
+  transform: scale(.99);
+}}
+
+@media (max-width: 600px) {{
+  body {{
+    padding: 18px;
+  }}
+
+  h1 {{
+    font-size: 30px;
+  }}
+
+  .card {{
+    font-size: 21px;
+    padding: 22px;
+  }}
+}}
 </style>
 </head>
 <body>
-<h1>Viviendas MAAV</h1>
-{enlaces}
+
+<h1>MAAV</h1>
+<p class="sub">Guías rápidas para huéspedes.</p>
+
+<div class="section">General</div>
+<div class="grid">
+{especiales_html}</div>
+
+<div class="section">Viviendas</div>
+<div class="grid">
+{viviendas_html}</div>
+
 </body>
 </html>"""
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)
+
+    print("Index generado")
 
 def main():
     os.makedirs(SALIDA, exist_ok=True)

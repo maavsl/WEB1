@@ -5,31 +5,113 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAAV</title>
 <style>
-body{font-family:Arial;padding:20px;background:#f4f1ea}
-.card{display:block;margin:10px 0;padding:20px;background:white;border-radius:12px;text-decoration:none;color:black;font-size:20px}
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f1ea;
+  margin: 0;
+  padding: 24px;
+  color: #1f2933;
+}
+
+h1 {
+  font-size: 34px;
+  margin: 0 0 8px;
+}
+
+.sub {
+  color: #667085;
+  font-size: 16px;
+  margin: 0 0 24px;
+}
+
+.section {
+  margin: 30px 0 12px;
+  font-size: 17px;
+  font-weight: 900;
+  color: #667085;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+}
+
+.card {
+  display: block;
+  padding: 22px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 850;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+.especial {
+  background: #ffffff;
+  color: #1f2933;
+}
+
+.vivienda {
+  background: #0f766e;
+  color: white;
+}
+
+.card:active {
+  transform: scale(.99);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 18px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    font-size: 21px;
+    padding: 22px;
+  }
+}
 </style>
 </head>
 <body>
-<h1>Viviendas MAAV</h1>
-    <a class="card" href="salida/abanicos.html">Abanicos</a>
-    <a class="card" href="salida/artemy_49.html">Artemy 49</a>
-    <a class="card" href="salida/artemy_71.html">Artemy 71</a>
-    <a class="card" href="salida/ecuador.html">Ecuador</a>
-    <a class="card" href="salida/erbania.html">Erbania</a>
-    <a class="card" href="salida/hoplaco.html">Hoplaco</a>
-    <a class="card" href="salida/milu.html">Milu</a>
-    <a class="card" href="salida/naranja.html">Naranja</a>
-    <a class="card" href="salida/p23.html">P23</a>
-    <a class="card" href="salida/p89.html">P89</a>
-    <a class="card" href="salida/pescadores.html">Pescadores</a>
-    <a class="card" href="salida/pm.html">Pm</a>
-    <a class="card" href="salida/puerto_lajas.html">Puerto Lajas</a>
-    <a class="card" href="salida/restaurantes.html">Restaurantes</a>
-    <a class="card" href="salida/rojo.html">Rojo</a>
-    <a class="card" href="salida/time.html">Time</a>
-    <a class="card" href="salida/tornasol.html">Tornasol</a>
-    <a class="card" href="salida/vm.html">Vm</a>
-    <a class="card" href="salida/zarate.html">Zarate</a>
+
+<h1>MAAV</h1>
+<p class="sub">Guías rápidas para huéspedes.</p>
+
+<div class="section">General</div>
+<div class="grid">
+    <a class="card especial" href="restaurantes.html">🍽️ Restaurantes</a>
+    <a class="card especial" href="reglas.html">📋 Reglas</a>
+    <a class="card especial" href="7dias.html">🗺️ 7 días en Fuerteventura</a>
+</div>
+
+<div class="section">Viviendas</div>
+<div class="grid">
+    <a class="card vivienda" href="salida/abanicos.html">Abanicos</a>
+    <a class="card vivienda" href="salida/artemy_49.html">Artemy 49</a>
+    <a class="card vivienda" href="salida/artemy_71.html">Artemy 71</a>
+    <a class="card vivienda" href="salida/ecuador.html">Ecuador</a>
+    <a class="card vivienda" href="salida/erbania.html">Erbania</a>
+    <a class="card vivienda" href="salida/hoplaco.html">Hoplaco</a>
+    <a class="card vivienda" href="salida/milu.html">Milu</a>
+    <a class="card vivienda" href="salida/naranja.html">Naranja</a>
+    <a class="card vivienda" href="salida/p23.html">P23</a>
+    <a class="card vivienda" href="salida/p89.html">P89</a>
+    <a class="card vivienda" href="salida/pescadores.html">Pescadores</a>
+    <a class="card vivienda" href="salida/pm.html">PM</a>
+    <a class="card vivienda" href="salida/puerto_lajas.html">Puerto Lajas</a>
+    <a class="card vivienda" href="salida/rojo.html">Rojo</a>
+    <a class="card vivienda" href="salida/time.html">Time</a>
+    <a class="card vivienda" href="salida/tornasol.html">Tornasol</a>
+    <a class="card vivienda" href="salida/vm.html">VM</a>
+    <a class="card vivienda" href="salida/zarate.html">Zarate</a>
+</div>
 
 </body>
 </html>
