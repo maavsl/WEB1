@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAAV</title>
+
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -40,10 +41,8 @@ h1 {
 }
 
 .card {
-  display: block;
   padding: 22px;
   border-radius: 18px;
-  text-decoration: none;
   font-size: 22px;
   font-weight: 850;
   box-shadow: 0 8px 22px rgba(0,0,0,.08);
@@ -59,6 +58,47 @@ h1 {
   color: white;
 }
 
+.card-title {
+  margin-bottom: 18px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.open-btn {
+  background: white;
+  color: #0f766e;
+}
+
+.copy-btn {
+  background: rgba(255,255,255,.22);
+  color: white;
+}
+
+.especial .open-btn {
+  background: #0f766e;
+  color: white;
+}
+
+.especial .copy-btn {
+  background: #eef2f7;
+  color: #1f2933;
+}
+
+.btn:active,
 .card:active {
   transform: scale(.99);
 }
@@ -76,44 +116,221 @@ h1 {
     font-size: 21px;
     padding: 22px;
   }
+
+  .btn {
+    font-size: 13px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <h1>MAAV</h1>
 <p class="sub">Guías rápidas para huéspedes.</p>
 
 <div class="section">General</div>
+
 <div class="grid">
-    <a class="card especial" href="restaurantes.html">🍽️ Restaurantes</a>
-    <a class="card especial" href="reglas.html">📋 Reglas</a>
-    <a class="card especial" href="7dias.html">🗺️ 7 días en Fuerteventura</a>
+
+  <div class="card especial">
+    <div class="card-title">🍽️ Restaurantes</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="restaurantes.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/restaurantes.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card especial">
+    <div class="card-title">📋 Reglas</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="reglas.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/reglas.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card especial">
+    <div class="card-title">🗺️ 7 días en Fuerteventura</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="7dias.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/7dias.html')">COPIAR URL</button>
+    </div>
+  </div>
+
 </div>
 
 <div class="section">Viviendas</div>
+
 <div class="grid">
-    <a class="card vivienda" href="salida/abanicos.html">Abanicos</a>
-    <a class="card vivienda" href="salida/artemy_49.html">Artemy 49</a>
-    <a class="card vivienda" href="salida/artemy_71.html">Artemy 71</a>
-    <a class="card vivienda" href="salida/ecuador.html">Ecuador</a>
-    <a class="card vivienda" href="salida/erbania.html">Erbania</a>
-    <a class="card vivienda" href="salida/hoplaco.html">Hoplaco</a>
-    <a class="card vivienda" href="salida/milu.html">Milu</a>
-    <a class="card vivienda" href="salida/naranja.html">Naranja</a>
-    <a class="card vivienda" href="salida/p23.html">P23</a>
-    <a class="card vivienda" href="salida/p89.html">P89</a>
-    <a class="card vivienda" href="salida/pescadores.html">Pescadores</a>
-    <a class="card vivienda" href="salida/pm.html">PM</a>
-    <a class="card vivienda" href="salida/puerto_lajas.html">Puerto Lajas</a>
-    <a class="card vivienda" href="salida/rojo.html">Rojo</a>
-    <a class="card vivienda" href="salida/señorio.html">Señorio</a>
-    <a class="card vivienda" href="salida/sun_beach.html">Sun Beach</a>
-    <a class="card vivienda" href="salida/time.html">Time</a>
-    <a class="card vivienda" href="salida/tornasol.html">Tornasol</a>
-    <a class="card vivienda" href="salida/vm.html">VM</a>
-    <a class="card vivienda" href="salida/zarate.html">Zarate</a>
+
+  <div class="card vivienda">
+    <div class="card-title">Abanicos</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/abanicos.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/abanicos.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Artemy 49</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/artemy_49.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/artemy_49.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Artemy 71</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/artemy_71.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/artemy_71.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Ecuador</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/ecuador.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/ecuador.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Erbania</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/erbania.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/erbania.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Hoplaco</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/hoplaco.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/hoplaco.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Milu</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/milu.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/milu.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Naranja</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/naranja.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/naranja.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">P23</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/p23.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/p23.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">P89</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/p89.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/p89.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Pescadores</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/pescadores.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/pescadores.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">PM</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/pm.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/pm.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Puerto Lajas</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/puerto_lajas.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/puerto_lajas.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Rojo</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/rojo.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/rojo.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Señorio</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/señorio.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/señorio.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Sun Beach</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/sun_beach.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/sun_beach.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Time</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/time.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/time.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Tornasol</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/tornasol.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/tornasol.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">VM</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/vm.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/vm.html')">COPIAR URL</button>
+    </div>
+  </div>
+
+  <div class="card vivienda">
+    <div class="card-title">Zarate</div>
+    <div class="buttons">
+      <a class="btn open-btn" href="salida/zarate.html">IR</a>
+      <button class="btn copy-btn" onclick="copyURL('https://maavsl.github.io/WEB1/salida/zarate.html')">COPIAR URL</button>
+    </div>
+  </div>
+
 </div>
+
+<script>
+function copyURL(url) {
+  navigator.clipboard.writeText(url);
+  alert("URL copiada");
+}
+</script>
 
 </body>
 </html>
