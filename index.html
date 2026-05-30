@@ -4,117 +4,325 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAAV</title>
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f1ea;
-  margin: 0;
-  padding: 24px;
-  color: #1f2933;
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  padding:24px;
+  background:#f4f1ea;
+  color:#1f2933;
 }
 
-h1 {
-  font-size: 34px;
-  margin: 0 0 8px;
+h1{
+  font-size:38px;
+  margin:0;
+  color:#075985;
 }
 
-.sub {
-  color: #667085;
-  font-size: 16px;
-  margin: 0 0 24px;
+.sub{
+  margin:8px 0 28px;
+  color:#667085;
+  font-size:16px;
 }
 
-.section {
-  margin: 30px 0 12px;
-  font-size: 17px;
-  font-weight: 900;
-  color: #667085;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+.section{
+  margin:32px 0 14px;
+  font-size:17px;
+  font-weight:900;
+  color:#667085;
+  text-transform:uppercase;
+  letter-spacing:.08em;
 }
 
-.grid {
-  display: grid;
-  gap: 14px;
-  max-width: 760px;
+.grid-general{
+  display:grid;
+  gap:14px;
+  max-width:760px;
 }
 
-.card {
-  display: block;
-  padding: 22px;
-  border-radius: 18px;
-  text-decoration: none;
-  font-size: 22px;
-  font-weight: 850;
-  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+.card{
+  display:block;
+  padding:22px;
+  border-radius:18px;
+  text-decoration:none;
+  font-size:22px;
+  font-weight:850;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
-.especial {
-  background: #ffffff;
-  color: #1f2933;
+.especial{
+  background:white;
+  color:#1f2933;
 }
 
-.vivienda {
-  background: #0f766e;
-  color: white;
+.grid-viviendas{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;
 }
 
-.card:active {
-  transform: scale(.99);
+.item-vivienda{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 18px;
+.item-vivienda h2{
+  margin:0 0 18px;
+  font-size:20px;
+  color:#075985;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+}
+
+.open-btn,
+.copy-btn{
+  border:none;
+  border-radius:999px;
+  padding:11px 18px;
+  font-size:13px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.open-btn{
+  background:#0891b2;
+  color:white;
+  text-decoration:none;
+}
+
+.copy-btn{
+  background:#eef2f5;
+  color:#1f2933;
+}
+
+.open-btn:hover{
+  opacity:.9;
+}
+
+.copy-btn:hover{
+  background:#dfe6eb;
+}
+
+@media (max-width:600px){
+
+  body{
+    padding:18px;
   }
 
-  h1 {
-    font-size: 30px;
+  h1{
+    font-size:30px;
   }
 
-  .card {
-    font-size: 21px;
-    padding: 22px;
+  .grid-viviendas{
+    grid-template-columns:1fr;
   }
 }
 </style>
 </head>
+
 <body>
 
-<h1>MAAV</h1>
+<h1>📚 MAAV GUÍAS</h1>
 <p class="sub">Guías rápidas para huéspedes.</p>
 
 <div class="section">General</div>
-<div class="grid">
-    <a class="card especial" href="restaurantes.html">🍽️ Restaurantes</a>
-    <a class="card especial" href="reglas.html">📋 Reglas</a>
-    <a class="card especial" href="7dias.html">🗺️ 7 días en Fuerteventura</a>
+
+<div class="grid-general">
+  <a class="card especial" href="restaurantes.html">🍽️ Restaurantes</a>
+  <a class="card especial" href="reglas.html">📋 Reglas</a>
+  <a class="card especial" href="7dias.html">🗺️ 7 días en Fuerteventura</a>
 </div>
 
 <div class="section">Viviendas</div>
-<div class="grid">
-    <a class="card vivienda" href="salida/abanicos.html">Abanicos</a>
-    <a class="card vivienda" href="salida/artemy_49.html">Artemy 49</a>
-    <a class="card vivienda" href="salida/artemy_71.html">Artemy 71</a>
-    <a class="card vivienda" href="salida/ecuador.html">Ecuador</a>
-    <a class="card vivienda" href="salida/erbania.html">Erbania</a>
-    <a class="card vivienda" href="salida/hoplaco.html">Hoplaco</a>
-    <a class="card vivienda" href="salida/los_lagos_1.html">Los Lagos 1</a>
-    <a class="card vivienda" href="salida/milu.html">Milu</a>
-    <a class="card vivienda" href="salida/naranja.html">Naranja</a>
-    <a class="card vivienda" href="salida/p23.html">P23</a>
-    <a class="card vivienda" href="salida/p89.html">P89</a>
-    <a class="card vivienda" href="salida/pescadores.html">Pescadores</a>
-    <a class="card vivienda" href="salida/pm.html">PM</a>
-    <a class="card vivienda" href="salida/puerto_lajas.html">Puerto Lajas</a>
-    <a class="card vivienda" href="salida/rojo.html">Rojo</a>
-    <a class="card vivienda" href="salida/señorio.html">Señorio</a>
-    <a class="card vivienda" href="salida/sun_beach.html">Sun Beach</a>
-    <a class="card vivienda" href="salida/time.html">Time</a>
-    <a class="card vivienda" href="salida/tornasol.html">Tornasol</a>
-    <a class="card vivienda" href="salida/vm.html">VM</a>
-    <a class="card vivienda" href="salida/zarate.html">Zarate</a>
+
+<div class="grid-viviendas">
+
+  <div class="item-vivienda">
+    <h2>Abanicos</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/abanicos.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/abanicos.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Artemy 49</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/artemy_49.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/artemy_49.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Artemy 71</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/artemy_71.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/artemy_71.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Ecuador</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/ecuador.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/ecuador.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Erbania</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/erbania.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/erbania.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Hoplaco</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/hoplaco.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/hoplaco.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Los Lagos 1</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/los_lagos_1.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/los_lagos_1.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Milu</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/milu.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/milu.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Naranja</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/naranja.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/naranja.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>P23</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/p23.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/p23.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>P89</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/p89.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/p89.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Pescadores</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/pescadores.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/pescadores.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>PM</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/pm.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/pm.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Puerto Lajas</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/puerto_lajas.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/puerto_lajas.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Rojo</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/rojo.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/rojo.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Señorio</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/señorio.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/señorio.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Sun Beach</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/sun_beach.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/sun_beach.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Time</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/time.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/time.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Tornasol</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/tornasol.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/tornasol.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>VM</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/vm.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/vm.html')">COPY URL</button>
+    </div>
+  </div>
+
+  <div class="item-vivienda">
+    <h2>Zarate</h2>
+    <div class="actions">
+      <a class="open-btn" href="salida/zarate.html">OPEN</a>
+      <button class="copy-btn" onclick="copiarUrl('salida/zarate.html')">COPY URL</button>
+    </div>
+  </div>
+
 </div>
+
+<script>
+function copiarUrl(ruta) {
+  const base = window.location.href.replace(/index\.html$/, '');
+  const url = base + ruta;
+
+  navigator.clipboard.writeText(url);
+
+  alert('✅ URL copiada');
+}
+</script>
 
 </body>
 </html>
