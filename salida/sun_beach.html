@@ -201,6 +201,29 @@ display:grid;
 grid-template-columns:1fr;
 gap:10px;
 }
+.guide-link{
+display:flex;
+align-items:center;
+justify-content:center;
+width:100%;
+min-height:74px;
+padding:18px 20px;
+border-radius:18px;
+background:linear-gradient(135deg,#ecfdf5,#ffffff);
+color:var(--primary-dark);
+text-decoration:none;
+font-size:17px;
+font-weight:900;
+text-align:center;
+border:2px solid #99f6e4;
+box-shadow:0 10px 24px rgba(15,118,110,.12);
+transition:.2s;
+}
+
+.guide-link:hover{
+transform:translateY(-2px);
+background:#f0fdfa;
+}
 
 .bottom-nav{
 position:fixed;
@@ -370,9 +393,7 @@ pool:"🏊 Piscina",
 parking:"🅿️ Parking",
 trash:"🗑️ Basura",
 supermarkets:"🛒 Supermercados",
-beaches:"🏖️ Actividades",
-restaurants:"🍽️ Restaurantes",
-seven:"🌴 Fuerteventura en 7 días",
+guide:"🌴 LA MEJOR GUÍA DE FUERTEVENTURA",
 navMaps:"📍<br>Maps",
 navKeys:"🔑<br>Llaves",
 navVideo:"🎥<br>Vídeo",
@@ -401,9 +422,7 @@ pool:"🏊 Pool",
 parking:"🅿️ Parking",
 trash:"🗑️ Rubbish point",
 supermarkets:"🛒 Supermarkets",
-beaches:"🏖️ Activities",
-restaurants:"🍽️ Restaurants",
-seven:"🌴 Fuerteventura in 7 days",
+guide:"🌴 THE BEST GUIDE TO FUERTEVENTURA",
 navMaps:"📍<br>Maps",
 navKeys:"🔑<br>Keys",
 navVideo:"🎥<br>Video",
@@ -432,9 +451,7 @@ pool:"🏊 Pool",
 parking:"🅿️ Parkplatz",
 trash:"🗑️ Müll",
 supermarkets:"🛒 Supermärkte",
-beaches:"🏖️ Aktivitäten",
-restaurants:"🍽️ Restaurants",
-seven:"🌴 Fuerteventura in 7 Tagen",
+guide:"🌴 DIE BESTE ANLEITUNG FÜR FUERTEVENTURA",
 navMaps:"📍<br>Maps",
 navKeys:"🔑<br>Schlüssel",
 navVideo:"🎥<br>Video",
@@ -463,9 +480,7 @@ pool:"🏊 Piscina",
 parking:"🅿️ Parcheggio",
 trash:"🗑️ Rifiuti",
 supermarkets:"🛒 Supermercati",
-beaches:"🏖️ Attività",
-restaurants:"🍽️ Ristoranti",
-seven:"🌴 Fuerteventura in 7 giorni",
+guide:"🌴 LA MIGLIORE GUIDA DI FUERTEVENTURA",
 navMaps:"📍<br>Maps",
 navKeys:"🔑<br>Chiavi",
 navVideo:"🎥<br>Video",
@@ -605,9 +620,16 @@ addExtra(t.pool,data.pool);
 addExtra(t.parking,data.parking);
 addExtra(t.trash,data.trash);
 addExtra(t.supermarkets,data.supermarkets);
-addExtra(t.beaches,data.beaches);
-addExtra(t.restaurants,data.restaurants);
-addExtra(t.seven,data.seven);
+document.getElementById("extras").innerHTML += `
+<a
+  class="guide-link"
+  href="https://maavsl.github.io/guia-fuerte-total/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  ${t.guide}
+</a>
+`;
 
 document.getElementById("extrasCard").style.display=
 document.getElementById("extras").innerHTML.trim()===""
