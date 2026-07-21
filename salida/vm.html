@@ -391,6 +391,7 @@ extras:"🌴 Información útil",
 rules:"📋 Normas",
 pool:"🏊 Piscina",
 parking:"🅿️ Parking",
+parkingOnSite:"Parking privado en las instalaciones",
 trash:"🗑️ Basura",
 supermarkets:"🛒 Supermercados",
 guide:"🌴 LA MEJOR GUÍA DE FUERTEVENTURA",
@@ -420,6 +421,7 @@ extras:"🌴 Useful information",
 rules:"📋 House rules",
 pool:"🏊 Pool",
 parking:"🅿️ Parking",
+parkingOnSite:"Private parking on site",
 trash:"🗑️ Rubbish point",
 supermarkets:"🛒 Supermarkets",
 guide:"🌴 THE BEST GUIDE TO FUERTEVENTURA",
@@ -449,6 +451,7 @@ extras:"🌴 Nützliche Informationen",
 rules:"📋 Hausregeln",
 pool:"🏊 Pool",
 parking:"🅿️ Parkplatz",
+parkingOnSite:"Privater Parkplatz vor Ort",
 trash:"🗑️ Müll",
 supermarkets:"🛒 Supermärkte",
 guide:"🌴 DIE BESTE ANLEITUNG FÜR FUERTEVENTURA",
@@ -478,6 +481,7 @@ extras:"🌴 Informazioni utili",
 rules:"📋 Regole della casa",
 pool:"🏊 Piscina",
 parking:"🅿️ Parcheggio",
+parkingOnSite:"Parcheggio privato in loco",
 trash:"🗑️ Rifiuti",
 supermarkets:"🛒 Supermercati",
 guide:"🌴 LA MIGLIORE GUIDA DI FUERTEVENTURA",
@@ -624,7 +628,7 @@ if(useful(data.parking)){
   }else{
     document.getElementById("extras").innerHTML += `
       <div class="info-line">
-        ${t.parking}: ${data.parking}
+        ${t.parking}: ${t.parkingOnSite}
       </div>
     `;
   }
