@@ -617,7 +617,19 @@ document.getElementById("extras").innerHTML="";
 
 addExtra(t.rules,data.rules);
 addExtra(t.pool,data.pool);
-addExtra(t.parking,data.parking);
+
+if(useful(data.parking)){
+  if(/^https?:\/\//i.test(data.parking)){
+    addExtra(t.parking,data.parking);
+  }else{
+    document.getElementById("extras").innerHTML += `
+      <div class="info-line">
+        ${t.parking}: ${data.parking}
+      </div>
+    `;
+  }
+}
+
 addExtra(t.trash,data.trash);
 addExtra(t.supermarkets,data.supermarkets);
 document.getElementById("extras").innerHTML += `
